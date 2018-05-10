@@ -1,0 +1,62 @@
+{
+  "package": "com.xunlei.movie",
+  "name": "读书栏目",
+  "versionName": "1.0.0",
+  "versionCode": "1",
+  "minPlatformVersion": "101",
+  "icon": "/Common/logo.png",
+  "features": [
+    { "name": "system.prompt" },
+    { "name": "system.router" },
+    { "name": "system.shortcut" },
+    { "name": "system.fetch" },
+    { "name": "system.webview" } 
+  ],
+  "permissions": [
+    { "origin": "*" }
+  ],
+  "config": {
+    "logLevel": "debug",
+    "designWidth": 750
+  },
+  "router": {
+    "entry": "Home",
+    "pages": {
+      "List": {
+        "component": "index"
+      },
+      "Detail": {
+        "component": "index"
+      },
+      "About": {
+        "component": "index"
+      },
+      "Home": {
+        "component": "index"
+      }
+    }
+  },
+  "display": {
+    "titleBarBackgroundColor": "#f2f2f2",
+    "titleBarTextColor": "#414141",
+    "menu": true,
+    "pages": {
+      "List": {
+        "titleBarText": "列表",
+        "menu": true
+      },
+      "Detail": {
+        "titleBarText": "详情",
+        "menu": true
+      },
+      "About": {
+        "titleBarText": "关于",
+        "menu": false
+      },
+      "Home": {
+        "titleBarText": "home",
+        "menu": false
+      }
+    }
+  }
+}

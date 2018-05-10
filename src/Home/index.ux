@@ -1,0 +1,58 @@
+<template>
+  <div class="home">
+    <swiper autoplay={{autoplay}} interval={{interval}}>
+      <image src="../Common/logo.png"></image>
+      <image src="../Common/assets/img/default.png"></image>
+    </swiper>
+    <a class="test" href="http://book.sina.cn/">打开webview</a>
+    <a class="test" href="/List">打开自己的路由</a>
+  </div>
+</template>
+
+<style lang="less">
+  .home{
+    flex-direction:column;
+    swiper{
+      width: 750px;
+      height: 200px;
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .tutorial-page {
+      
+    }
+    .test{
+      background-color: #f60;
+      width: 750px;
+      height: 50px;
+    }
+  }
+</style>
+
+<script>
+  export default {
+    props: ['name', 'icon'],
+    data: {
+      autoplay:true,
+      interval:1000,
+      swiperList:[]
+    },
+    onInit () {
+      // 设置标题栏
+      this.$page.setTitleBar({ text: this.name })
+    },
+    createShortcut () {
+      // 创建快捷方式
+      this.$app.createShortcut()
+    },
+    //返回按钮
+    onBackPress () {
+      console.info(`触发：onBackPress`)
+    },
+    testGo(){
+
+    }
+  }
+</script>
