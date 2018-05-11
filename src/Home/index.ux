@@ -17,7 +17,7 @@
             <text>聊天</text>
           </div>
           <div class="tab-content-section">
-            <text>发现</text>
+            <text onclick="findNew()">发现</text>
           </div>
           <div class="tab-content-section">
             <text>通讯录</text>
@@ -70,23 +70,58 @@
 </style>
 
 <script>
+  import prompt from '@system.prompt'
   import router from '@system.router'
-
+  import storage from '@system.storage'
+  import webview from '@system.webview'
   export default {
     private: {
       currentIndex: 0
     },
     onInit () {
+      console.log('testData')
+      console.log(JSON.stringify(gData))
       this.$page.setTitleBar({ text: 'tabs仅包含tab-content' })
+      //设置storage存储
+      storage.set({
+        key: 'A1',
+        value: 'V1',
+        success: function (data) {
+          console.log('数据写入成功。。。')
+        },
+        fail: function (data, code) {
+          console.log(`handling fail, code = ${code}`)
+        }
+      })
     },
     changeTabactive (evt) {
       this.currentIndex = evt.index
     },
     clickTabBar (index) {
       this.currentIndex = index
+      console.log(index)
+      if(index==0){
+        prompt.showToast({
+          message: '我想在这打开网页。。。'
+        })
+      }
     },
     routePage (param) {
-      
+      storage.get({
+        key: 'A1',
+        success: function (data) {
+          console.log('handling success')
+          console.log(data)
+        },
+        fail: function (data, code) {
+          console.log(`handling fail, code = ${code}`)
+        }
+      })
+    },
+    findNew(){
+      webview.loadUrl({
+        url: 'http://192.168.191.1:4001/test_webview.html'
+      })
     }
   }
 </script>

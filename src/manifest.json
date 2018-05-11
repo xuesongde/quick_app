@@ -10,7 +10,8 @@
     { "name": "system.router" },
     { "name": "system.shortcut" },
     { "name": "system.fetch" },
-    { "name": "system.webview" } 
+    { "name": "system.webview" },
+    {"name": "system.storage"} 
   ],
   "permissions": [
     { "origin": "*" }

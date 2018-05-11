@@ -5,7 +5,6 @@
   // 脚本：regenerator.js
   // 全局引用
   const globalRef = global.__proto__ || global
-
   // global注入regeneratorRuntime
   globalRef.regeneratorRuntime = require('babel-runtime/regenerator')
 
@@ -33,13 +32,17 @@
       return p1
     }
   }
+  const gData={
+    'name':'xsd'
+  }
   // 注入到全局
   const hookTo = global.__proto__ || global
   hookTo.natives = natives
-
+  hookTo.gData = gData
   export default {
     showMenu,
     createShortcut,
-    natives
+    natives,
+    gData
   }
 </script>
