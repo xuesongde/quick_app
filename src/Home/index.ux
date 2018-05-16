@@ -4,27 +4,43 @@
     <div class="flexible-tabs">
       <!-- 自定义tab-bar组件 -->
       <div class="flexible-tabbar">
-        <image src="../Common/assets/home/user.png" onclick="routePage('personal')"></image>
-        <text class="{{currentIndex === 0 ? 'active' : ''}}" onclick="clickTabBar(0)">聊天</text>
-        <text class="{{currentIndex === 1 ?  'active' : ''}}" onclick="clickTabBar(1)">发现</text>
-        <text class="{{currentIndex === 2 ? 'active' : ''}}" onclick="clickTabBar(2)">通讯录</text>
-        <image src="../Common/assets/home/search.png" onclick="routePage('search')"></image>
+        <image src="../Common/assets/home/logo.png" onclick="routePage('personal')"></image>
+        <text class="{{currentIndex === 0 ? 'active' : ''}}" onclick="clickTabBar(0)">男生</text>
+        <text class="{{currentIndex === 1 ?  'active' : ''}}" onclick="clickTabBar(1)">女生</text>
+        <text class="{{currentIndex === 2 ? 'active' : ''}}" onclick="clickTabBar(2)">关于我们</text>
       </div>
       <!-- 监听change事件，触发时动态修改tabs的index属性 -->
       <tabs onchange="changeTabactive" index="{{currentIndex}}">
         <tab-content class="flexible-tab-content">
           <div class="tab-content-section">
-            <text>聊天</text>
+            <text class="tab1">&nbsp;&nbsp;&nbsp;&nbsp;不小心把手机摔坏，竟摔出了与众不同的人生
+有人说他是老师，他说自己是明星，有人说他是国术宗师，他说自己是医生，有人说他是…… 张策说：“其实我是超人！”
+生来就为花钱！不是我要败家，而是我不得不败家！
+“我要花钱，我要败家！”苦逼少年意外获得了败家子系统，从此这句话就成了他的口头禅。任务：大败家，48小时内败家一亿，任务
+唐朝穿越奋斗指南，从孤身一人到安居乐业！
+公元622年，大唐武德五年，唐高祖李渊在位，未来威震四方的大唐刚刚建立，风雨飘雨。薛朗，一个现代青年穿越到此时的唐朝，生
+屌丝陈扬偶然得透视眼，从此享无数财富……
+屌丝陈扬却拥有着透视眼，享无数财富......</text>
           </div>
           <div class="tab-content-section">
-            <text onclick="findNew()">发现</text>
+            <text class="tab2">&nbsp;&nbsp;&nbsp;&nbsp;丈夫为保护初恋，将刚生下孩子的她赶出家门……
+她为他付出一切，最终只换来他一句“离婚”。 一纸离婚协议，成了击倒她的最后一击。 被赶出家门，孑然一身，身无分文，距
+重生复仇，却一不小心勾了只妖孽男……
+血仇未报，怨气熏天，乱坟岗中她借尸还魂，涅槃归来！ 嫡姐伪善？剥了你的白莲花皮！ 主母狠辣？赏剂毒药送你归天！ 渣
+追尾极品大叔，她被迫在车祸现场相亲！
+“大叔，你这头老牛敢吃我这棵嫩草吗？”跟她叫板？先用年龄秒杀他！再用气场镇住他！“老牛牙口不好，只能吃嫩草”调戏不成反被
+穿越成沙漠女土匪！对抗朝廷却惹来帝君围剿！
+边境有女匪，不仅无恶不作，还公然抢夺了天朝供物八卦象！龙椅上，一双锐利黑瞳刹那抬起……她，21世纪超级女特工，竟穿越成沙</text>
           </div>
           <div class="tab-content-section">
-            <text>通讯录</text>
+            <text class="tab3">&nbsp;&nbsp;&nbsp;&nbsp;《新浪读书》有网页版和IOS版两个版本，全球最大的中文文学网站，可以为读者提供好看的小说推荐，小说排行榜。这里有最全的免费言情小说，穿越小说、玄幻小说、武侠小说、网游小说、灵异小说、恐怖小说、都市小说、等各类，为文学爱好者搭建华文最具影响力的网络原创平台。
+            当前版本安卓快应用版1.0。
+            </text>
           </div>
         </tab-content>
       </tabs>
     </div>
+    <a href="http://book.sina.cn" class="bottom_btn">去读书</a>
   </div>
 </template>
 
@@ -49,7 +65,7 @@
         }
         image {
           height: 50px;
-          width: 50px;
+          width: 140px;
           resize-mode: contain;
         }
         .active {
@@ -62,9 +78,21 @@
         .tab-content-section {
           flex: 1;
           background-color: #ffffff;
-          justify-content: center;
+          justify-content: flex-start;
+          align-items: flex-start;
+          height: 400px;
+          padding: 20px;
         }
       }
+    }
+    .bottom_btn{
+      position: fixed;
+      bottom: 0;
+      background-color: #ff6611;
+      width: 750px;
+      height: 88px;
+      color: #ffffff;
+      text-align: center;
     }
   }
 </style>
@@ -74,14 +102,14 @@
   import router from '@system.router'
   import storage from '@system.storage'
   import webview from '@system.webview'
+  import { createShortcut } from '../util'
   export default {
     private: {
       currentIndex: 0
     },
     onInit () {
       console.log('testData')
-      console.log(JSON.stringify(gData))
-      this.$page.setTitleBar({ text: 'tabs仅包含tab-content' })
+      //this.$page.setTitleBar({ text: '新浪读书' })
       //设置storage存储
       storage.set({
         key: 'A1',
@@ -101,22 +129,13 @@
       this.currentIndex = index
       console.log(index)
       if(index==0){
-        prompt.showToast({
-          message: '我想在这打开网页。。。'
-        })
+        // prompt.showToast({
+        //   message: '我想在这打开网页。。。'
+        // })
       }
     },
     routePage (param) {
-      storage.get({
-        key: 'A1',
-        success: function (data) {
-          console.log('handling success')
-          console.log(data)
-        },
-        fail: function (data, code) {
-          console.log(`handling fail, code = ${code}`)
-        }
-      })
+      createShortcut();
     },
     findNew(){
       webview.loadUrl({

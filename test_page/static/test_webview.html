@@ -17,10 +17,21 @@ user-scalable=yes：表示用户是否可以调整缩放比例-->
 <meta http-equiv="x-dns-prefetch-control" content="on">
 <!--浏览器会在加载网页时对网页中的域名进行解析缓存，这样在你单击当前网页中的连接时就无需进行 DNS 的解析-->
 <title>我是一级页面</title>
+<style>
+	.flex_test{
+		display: flex;
+		flex-direction: column;
+	}
+</style>
 </head>
 <body>
 	一级
 	<a onclick="doIt()">跳转二级</a>
+	<div class="flex_test">
+		<div>first div</div>
+		<div>second div</div>
+		<div>third div</div>
+	</div>
 </body>
 <script type="text/javascript">
 	function doIt(){

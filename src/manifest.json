@@ -1,5 +1,5 @@
 {
-  "package": "com.xunlei.movie",
+  "package": "com.sina.app",
   "name": "读书栏目",
   "versionName": "1.0.0",
   "versionCode": "1",
@@ -55,7 +55,7 @@
         "menu": false
       },
       "Home": {
-        "titleBarText": "home",
+        "titleBarText": "新浪读书",
         "menu": false
       }
     }
