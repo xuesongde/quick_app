@@ -1,9 +1,9 @@
 {
-  "package": "com.sina.app",
-  "name": "读书栏目",
-  "versionName": "1.0.0",
-  "versionCode": "1",
-  "minPlatformVersion": "101",
+  "package": "com.sina.app.v2",
+  "name": "浪花小说",
+  "versionName": "1.0.1",
+  "versionCode": "2",
+  "minPlatformVersion": "1000",
   "icon": "/Common/logo.png",
   "features": [
     { "name": "system.prompt" },
@@ -11,7 +11,10 @@
     { "name": "system.shortcut" },
     { "name": "system.fetch" },
     { "name": "system.webview" },
-    {"name": "system.storage"} 
+    {"name": "system.storage"},
+    {"name": "service.wxpay", "params": {"package": "com.sina.app.v2", 
+      "sign": "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC72cM8lA+TaiWB9exLAkJ6PkG7h0LCgNeF8aO986c87tF9zAZA3Gjty6KANYFJ6nu49E8E+0soqYuCy33vi83wej7hrPgTtqVnuno/874K9Eu2nurL0J+CQDj/vbrDZl1VSYC2c0DtM4cPs+y6jGhcNEzgkNG06aUGLzUcRlOxxh1FR1gku2I+Qt6raXAFOk0C9wDSYkjg4U+2tyxrM5SjI3W5K2B4c/FDJIaXdO9g/58ToHV0rIHumIegiuL+aOSXlM4BiPBTrU7rnyuEEvwc3jpHXFn1tOEhUjXkc9xLiIrzZPCaO6NKs1UEReXvLyJCoz08UKTEfnrkg3+CUPSvAgMBAAECggEAFAP8+IxyKGvr+TAB8HAaMzpE+L1N0Lm3vS7lGo1GqYhsy/GcTPbvOz8yXmTVFNImQqvNa6N2+6stEU+raIXF+LSd1KAAguE4OJg3BG9tNW+YTaobLIJbLJ65NA68Qqu6kCbXzxjytxOBdZvfQnVJfWGZO2hS3+rxSXpoN04LBur9Sub6RkUnG0AI/17q0p/KEEZdKzeOjv1CTbhq+jB/myLbWk+YQl3ioQY+XC5ohfjjHhFlf8zK9StmK2bOX9SS9czIX0QAsPPScMouh2lCIiJvd8W7NSfd8f+j5wPXexaxwtAypmirqOD6/C7TJYfjDhmc+71wKeZuu42LzTYeGQKBgQDpVERSqm1+Lx9ovMO+j9Si8K+uSwgO38TjCOW9Mw8kJEk36SIeYF36c0j6Sn5bxyA1DtxrKcoFdJuu2GSS7iSBeYIRAv230tNNWDTdXeR/T4WKKfi/6bWxytEVjs+/OJwytWMV0BYxBx3fhZWjJfdRm9y6BlWB1X4eo2uSqS07kwKBgQDOGkgVTlUsJ85KEkjJ2scLxOjLojKtnIV7kFpyF90bDaopYvkksZ1Qj2BkNxXb2EpZcyGv2A2uX26zpu+pA+C3DmRWkC6eM3qsrze9IqIhnPhuobB6vjNZWxDD/91ursKq0dLgKA8B8+8P5xq/WGA65NqQENQYusZp5HqaJq3r9QKBgHRJ+k9U/4MvSzExO0HDf4/B810jqh13qzIYIiA8zWQO7ar+93E6SDxlrs6HyBhH0yZ+hJ6oUjaL2ne3A9Ey/WDGRWvjGL7ARW2784UMobBN2tl0d7R2b4bv9WsQJTxBo5+mRX7+mcDPsjTP6DdK2cuDqevQ8lbmJ5hvjFKpHJEfAoGAbKG/orNCA18LxVDz2qkcxuBHz6UzTvy0ApfohEB9wxelu+C17xhLEb4wkUHTnKfZMGKVu+iF9YXJhJmVsqEfnXzReCrQ14PMwh4so90QVeU1sKI6scd0q0FridNf9Enaw0yK+KlEl8PqGpi2KWq8de5QISUtlcdEc2YBFSUUAM0CgYEA3+jdDxPNKIbRRizxGDNDa5/q7HDrud0KFCpvHxBAkngx429l+O7ZXfTJZhjGPn2rb3ssrez9ZL0/oiz7BIktC3J96gVqjSlmvAnX/rJfrthQTEIm6b7Z1wbNFs+F6sDOsaceen7ZyC68aNo890+QoSM5Gso1wKfmuK4Tq6BiTH4=",
+    "url":"http://book.sina.cn/dpool/newbook/bookv1/user/account.php"}} 
   ],
   "permissions": [
     { "origin": "*" }
@@ -34,6 +37,12 @@
       },
       "Home": {
         "component": "index"
+      },
+      "Pay": {
+        "component": "index"
+      },
+      "Web": {
+        "component": "index"
       }
     }
   },
@@ -55,7 +64,7 @@
         "menu": false
       },
       "Home": {
-        "titleBarText": "新浪读书",
+        "titleBarText": "浪花小说",
         "menu": false
       }
     }

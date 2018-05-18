@@ -40,7 +40,9 @@
         </tab-content>
       </tabs>
     </div>
-    <a href="http://book.sina.cn" class="bottom_btn">去读书</a>
+    <!-- <web id="web" src="http://book.sina.cn">去读书</web> -->
+    <!-- <a href="http://wxpay.wxutil.com/mch/pay/h5.v2.php" class="bottom_btn">微信支付</a> -->
+    <a onclick="goWeb()" class="bottom_btn">去读书</a>
   </div>
 </template>
 
@@ -135,11 +137,20 @@
       }
     },
     routePage (param) {
-      createShortcut();
+      // router.push({
+      //   uri: '/Pay',
+      //   params: { }
+      // })
     },
     findNew(){
       webview.loadUrl({
         url: 'http://192.168.191.1:4001/test_webview.html'
+      })
+    },
+    goWeb(){
+      router.push({
+        uri: '/Web',
+        params: { }
       })
     }
   }

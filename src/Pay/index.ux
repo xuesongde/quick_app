@@ -1,0 +1,82 @@
+<template>
+  <div class="pay">
+    <a onclick="useWxpay()">微信支付</a>
+    <a onclick="">支付宝支付</a>
+  </div>
+</template>
+
+<style lang="less">
+  .pay{
+    flex-direction: column;
+    a{
+      height: 50px;
+      text-align: center;
+      background-color: #dddddd;
+      margin: 20px;
+      color: #333333;
+    }
+  }
+</style>
+
+<script>
+  import prompt from '@system.prompt'
+  import router from '@system.router'
+  import wxpay from '@service.wxpay'
+  export default {
+    private: {
+      currentIndex: 0
+    },
+    onInit () {
+
+    },
+    useWxpay () {
+      var payType = wxpay.getType();
+      console.log(payType)
+      if (payType === 'APP') {
+        wxpay.pay({
+          //微信 app支付的prepayId
+          prepayid: 'your order prepayid,eg: wx20170101abcdef1234567890',
+          extra: {
+            app_id: 'your app_id',
+            partner_id: 'your partner_id',
+            package_value: 'your package_value',
+            nonce_str: 'your nonce_str',
+            time_stamp: 'your time_stamp',
+            order_sign: 'your order sign'
+          },
+          fail: function (data, code) {
+            console.log(`WX PAY failed, code = ${code}`)
+          },
+          cancel: function (data) {
+            console.log('WX PAY cancelled by user')
+          },
+          success: function (data) {
+            console.log('WX PAY success')
+          }
+        })
+      } else if (payType === 'MWEB') {
+        wxpay.pay({
+          //微信网页支付的prepayId
+          prepayid: 'wx2016121516420242444321ca0631331346',
+          extra: {
+            //传递给支付页面的自定义参数, 根据需要进行设置, 会被urlEncode之后拼接在配置的url尾部
+            mweb_url: 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx2016121516420242444321ca0631331346&package=1405458241'
+          },
+          fail: function (data, code) {
+            console.log(`WX H5 PAY handling fail, code = ${code}`)
+          },
+          cancel: function (data) {
+            console.log('WX H5 PAY handling cancel')
+          },
+          success: function (data) {
+            console.log(JSON.stringify(data))
+            //H5方式下，支付成功的回调仅仅只是指将订单递交给微信，并不意味着支付已经成功完成
+            console.log('WX H5 PAY handling success')
+          }
+        })
+      } else {
+        console.log('WX PAY is not avaliable')
+      }
+    }
+  }
+</script>
