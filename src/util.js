@@ -6,21 +6,28 @@ export function showMenu () {
   var router = require('@system.router')
   var appInfo = require('@system.app').getInfo()
   prompt.showContextMenu({
-    itemList: ['保存桌面', '关于', '取消'],
+    itemList: ['首页','保存桌面', '关于', '取消'],
     success: function (ret) {
       switch (ret.index) {
       case 0:
+      // 首页
+        router.replace({
+          uri: '/Web',
+          params: { name: appInfo.name, icon: appInfo.icon }
+        })
+      break
+      case 1:
         // 保存桌面
         createShortcut()
         break
-      case 1:
+      case 2:
         // 关于
         router.push({
           uri: '/About',
           params: { name: appInfo.name, icon: appInfo.icon }
         })
         break
-      case 2:
+      case 3:
         // 取消
         break
       default:

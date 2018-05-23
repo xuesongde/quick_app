@@ -1,0 +1,88 @@
+<template>
+    <!-- template里只能有一个根节点 -->
+    <div class="back">
+        <image style="width: 100%" src="../Common/assets/home/bg.png"></image>
+		<a onclick="goWeb" class="btn">继续读书</a>
+    	<text class="tip">再次点击返回将退出浪花小说</text>
+    </div>
+</template>
+
+<style lang="less">
+	.back{
+		flex-direction: column;
+		height: 100%;
+			.btn{
+				z-index: 100;
+				position: fixed;
+				flex-direction: column;
+				bottom: 400px;
+				left: 255px;
+				width: 240px;
+				height: 80px;
+				line-height: 80px;
+				color: #ffffff;
+				background-color: #f06e5f;
+				text-align: center;
+				border-radius: 100px;
+				font-size: 32px;
+			}
+			.tip{
+				position: fixed;
+				bottom: 340px;
+				left: 215px;
+				font-size: 24px;
+				color: #999999;
+			}
+	}
+</style>
+
+<script>
+	import { createShortcut } from '../util'
+	import router from '@system.router'
+    export default {
+        props: [],
+        data: {
+        	lcList:[]
+        },
+	    goWeb(){
+	      console.log('继续读书')
+	      router.replace({
+	        uri: '/Web',
+	        params: { }
+	      })
+	    },
+      	onInit () {
+		  this.$page.setTitleBar({ text: '生命周期' })
+
+		  this.lcList.push('onInit')
+
+		  console.info(`触发：onInit`)
+		  console.info(`执行：获取ViewModel的lcList属性：${this.lcList}`)   // 执行：获取ViewModel的lcList属性：onInit
+		},
+		onReady () {
+		  this.lcList.push('onReady')
+
+		  console.info(`触发：onReady`)
+		  console.info(`执行：获取模板节点：${this.$rootElement()}`)   // 执行：获取模板节点：<div attr={} style={"flexDirection":"column"}>...</div>
+		},
+		onShow () {
+		  this.lcList.push('onShow')
+
+		  console.info(`触发：onShow`)
+		  console.info(`执行：获取页面显示状态属性：${this.$visible}`)  // true
+		},
+		onHide () {
+		  this.lcList.push('onHide')
+
+		  console.info(`触发：onHide`)
+		  console.info(`执行：获取页面显示状态属性：${this.$visible}`)  // false
+		},
+		onDestroy () {
+		  console.info(`触发：onDestroy`)
+		  console.info(`执行：页面要被销毁，销毁状态：${this.$valid}，应该做取消接口订阅监听的操作: geolocation.unsubscribe()`)    // true，即将销毁
+		  setTimeout(function () {
+		    console.info(`执行：页面已被销毁，不会执行`)                // 页面已销毁，不会执行
+		  }.bind(this), 0)
+		}
+    }
+</script>

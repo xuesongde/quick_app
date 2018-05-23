@@ -1,6 +1,6 @@
 <template>
     <div class="demo-page">
-        <div id="loading" show="{{isLoading}}"><label>加载中...</label></div>
+        <!-- <div id="loading" show="{{isLoading}}"><label>加载中...</label></div> -->
         <web id="web" src="{{url}}" @pagestart="pagestart" onpagefinish="pagefinish" ontitlereceive="titlereceive"
              onerror="error"></web>
         <!-- <div class="open-bar" show="{{!isLoading}}">
@@ -49,7 +49,7 @@
     import router from '@system.router'
     export default {
         data: {
-            url: 'http://book.sina.cn',
+            url: 'http://book.sina.cn?from=quickApp',
             isLoading: false
         },
         onInit(){
@@ -92,18 +92,21 @@
 
         },
         onBackPress () {
-        this.$element('web').canBack({
-          callback: function (e) {
-            if (e) {
-              // 加载历史列表中的上一个 URL
-              this.$element('web').back()
-            } else {
-              router.back()
-            }
-          }.bind(this)
-        })
-        // 阻止默认行为，等待异步操作
-        return true
+            this.$element('web').canBack({
+              callback: function (e) {
+                if (e) {
+                  // 加载历史列表中的上一个 URL
+                  this.$element('web').back()
+                } else {
+                  router.replace({
+                        uri: '/Back',
+                        params: { }
+                    })
+                }
+              }.bind(this)
+            })
+            // 阻止默认行为，等待异步操作
+            return true
       },
       onMenuPress() {
         this.$app.showMenu()

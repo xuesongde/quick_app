@@ -1,8 +1,8 @@
 {
   "package": "com.sina.app.v2",
   "name": "浪花小说",
-  "versionName": "1.0.1",
-  "versionCode": "2",
+  "versionName": "1.0.2",
+  "versionCode": "3",
   "minPlatformVersion": "1000",
   "icon": "/Common/logo.png",
   "features": [
@@ -24,12 +24,12 @@
     "designWidth": 750
   },
   "router": {
-    "entry": "Home",
+    "entry": "Web",
     "pages": {
       "List": {
         "component": "index"
       },
-      "Detail": {
+      "Back": {
         "component": "index"
       },
       "About": {
@@ -55,12 +55,18 @@
         "titleBarText": "列表",
         "menu": true
       },
-      "Detail": {
-        "titleBarText": "详情",
+      "Web": {
+        "titleBarText": "",
         "menu": true
       },
+      "Back": {
+        "titleBarText": "确定退出吗",
+        "menu": false,
+        "titleBar":false,
+        "fullScreen":true
+      },
       "About": {
-        "titleBarText": "关于",
+        "titleBarText": "关于浪花小说",
         "menu": false
       },
       "Home": {
